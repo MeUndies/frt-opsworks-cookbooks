@@ -11,8 +11,8 @@
     sticky: true
     connections:
       <% @database[:connections].each do |connection| %>
-      - role: <%= connection[:role] %>
-        host: <%= connection[:host] %>
+      - role: <%= connection[:role].to_s.inspect %>
+        host: <%= connection[:host].to_s.inspect%>
       <% end %>
 <% if @database[:pool] -%>
   pool: <%= @database[:pool].to_i.inspect %>
