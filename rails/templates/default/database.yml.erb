@@ -10,10 +10,10 @@
   makara:
     sticky: true
     connections:
-      - role: master
-        host: <%= @database[:master_host] %>
-      - role: slave
-        host: <%= @database[:read_replica_1] %>
+      <% @database[:connections].each do |connection| %>
+      - role: <%= connection[:role] %>
+        host: <%= connection[:host] %>
+      <% end %>
 <% if @database[:pool] -%>
   pool: <%= @database[:pool].to_i.inspect %>
 <% end -%>
